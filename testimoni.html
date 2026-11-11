@@ -1,0 +1,55 @@
+from pathlib import Path
+
+html = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Indonesia Wonderful Tours 客户评价与旅行体验展示。">
+<title>客户评价 | Indonesia Wonderful Tours</title>
+<style>
+:root{--navy:#082b63;--blue:#075bb5;--gold:#ffb91f;--ink:#12213e;--muted:#64748b;--paper:#f3f8ff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}a{color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{background:#fff;box-shadow:0 2px 14px #0b2b5512}nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:22px;font-weight:800;line-height:1.05;color:var(--navy)}.brand span{display:block;color:#e04a42;font-size:12px;letter-spacing:2px;margin-top:5px}
+.links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.links a{text-decoration:none;font-weight:700;font-size:14px}.active{background:var(--blue);color:white!important;padding:9px 17px;border-radius:24px}
+.hero{color:#fff;background:linear-gradient(90deg,rgba(3,24,55,.83),rgba(3,24,55,.12)),url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1900&q=85') center/cover;padding:72px 0 82px}
+.hero h1{font-size:clamp(40px,7vw,68px);line-height:1.08;margin:0 0 8px}.hero .en{font-size:clamp(20px,3vw,30px);font-weight:700;margin:0 0 16px}.hero p{font-size:19px;max-width:700px;margin:0}
+main{padding:34px 0 58px}.notice{background:#fff8e6;border:1px solid #f5d78c;color:#684c13;padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:28px}
+.intro{text-align:center;margin:0 auto 28px;max-width:720px}.intro h2{font-size:32px;margin:0 0 6px;color:var(--navy)}.intro p{color:var(--muted);margin:0}
+.feature{display:grid;grid-template-columns:1.05fr 1fr;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 28px #0b2b5517;margin-bottom:24px}.feature img{width:100%;height:100%;min-height:330px;object-fit:cover}.copy{padding:26px 30px;align-self:center}
+h3{margin:0;font-size:22px;color:var(--navy)}.location{color:var(--muted);font-size:14px}.stars{color:var(--gold);font-size:27px;letter-spacing:3px;line-height:1.4;margin:8px 0}blockquote{font-size:18px;font-weight:600;margin:10px 0}.translation{color:#596579;font-style:italic;margin:8px 0 0}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 7px 24px #0b2b5514}.card img{width:100%;height:235px;object-fit:cover}.card .copy{padding:20px 23px}.card blockquote{font-size:17px}
+.sample{display:inline-block;background:#eaf3ff;color:#15559c;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;margin-top:8px}
+.share{margin-top:34px;padding:28px 30px;border-radius:18px;background:linear-gradient(110deg,#e5f1ff,#fff);display:flex;align-items:center;justify-content:space-between;gap:20px}.share h2{margin:0;color:var(--navy);font-size:26px}.share p{margin:4px 0 0;color:#53647d}
+.cta{display:inline-block;background:var(--gold);color:#152746;text-decoration:none;padding:13px 22px;border-radius:30px;font-weight:800;white-space:nowrap}
+footer{background:var(--navy);color:#fff;padding:24px 0}.foot{display:flex;align-items:center;justify-content:space-between;gap:18px}.foot p{margin:0}.wa{font-weight:800;text-decoration:none}
+@media(max-width:760px){nav{padding:15px 0;align-items:flex-start;flex-direction:column}.links{gap:12px}.hero{padding:58px 0}.hero p{font-size:17px}.feature{grid-template-columns:1fr}.feature img{min-height:230px;height:250px}.feature .copy{padding:22px}.cards{grid-template-columns:1fr}.share,.foot{align-items:flex-start;flex-direction:column}.share h2{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<div class="brand">Indonesia Wonderful Tours<span>DISCOVER THE BEAUTY OF INDONESIA</span></div>
+<div class="links"><a href="index.html">首页</a><a href="index.html#places">旅游线路</a><a href="index.html#services">关于我们</a><a class="active" href="testimoni.html">客户评价</a><a href="index.html#contact">联系我们</a></div>
+</nav></div></header>
+<section class="hero"><div class="wrap"><h1>客户评价</h1><p class="en">Customer Testimonials</p><p>每一次旅程，都值得留下美好的回忆。看看印尼之旅可以带给您怎样的体验。</p></div></section>
+<main class="wrap">
+<div class="notice"><strong>展示说明：</strong>以下照片与评价为页面设计示例，并非真实客户评价。正式发布前，请替换为已获授权的真实游客照片与真实反馈。</div>
+<div class="intro"><h2>旅行体验 · 值得分享</h2><p>从巴厘岛的海岛风光，到布罗莫日出与伊真火山湖，期待陪伴您探索印度尼西亚。</p></div>
+<article class="feature">
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=85" alt="旅行团体合影示意照片">
+<div class="copy"><h3>中国游客旅行团（示例）</h3><div class="location">中国游客 · 巴厘岛行程示例</div><div class="stars">★★★★★</div>
+<blockquote>“这次印尼之旅令人难忘！风景很美，期待有机会再次来到印尼。”</blockquote>
+<p class="translation">“A memorable journey in Indonesia. The scenery was beautiful!”</p><span class="sample">示例内容 · 非真实客户评价</span></div>
+</article>
+<div class="cards">
+<article class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85" alt="火山旅行风景示意照片"><div class="copy"><h3>布罗莫火山之旅（示例）</h3><div class="location">行程体验示例 · 东爪哇</div><div class="stars">★★★★★</div><blockquote>“清晨的火山景色非常壮观，是一次特别的旅行体验。”</blockquote><p class="translation">“The mountain scenery at sunrise was incredible.”</p><span class="sample">示例内容 · 非真实客户评价</span></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85" alt="山湖旅行风景示意照片"><div class="copy"><h3>伊真火山探索（示例）</h3><div class="location">行程体验示例 · 东爪哇</div><div class="stars">★★★★★</div><blockquote>“火山湖的景色令人惊叹，值得亲自来体验。”</blockquote><p class="translation">“The crater lake view was amazing and unforgettable.”</p><span class="sample">示例内容 · 非真实客户评价</span></div></article>
+</div>
+<section class="share"><div><h2>期待听到您的旅行故事！</h2><p>欢迎咨询专属行程，开启您的印度尼西亚之旅。</p></div><a class="cta" href="https://wa.me/6282231685186?text=您好，我想咨询印度尼西亚旅游行程。">WhatsApp 联系我们 →</a></section>
+</main>
+<footer><div class="wrap foot"><p>© 2026 Indonesia Wonderful Tours</p><a class="wa" href="https://wa.me/6282231685186">WhatsApp：+62 822 3168 5186</a></div></footer>
+</body></html>"""
+p = Path("/mnt/data/testimoni.html")
+p.write_text(html, encoding="utf-8")
+print(f"Berhasil membuat {p.name} ({p.stat().st_size:,} byte).")
