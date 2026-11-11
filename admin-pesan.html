@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Pesan | Indonesia Wonderful Tours</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 10px #00000010;
+    }
+    h2 { color: #173d35; }
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+    }
+    button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 7px;
+      background: #176b50;
+      color: white;
+      cursor: pointer;
+      margin: 5px 5px 5px 0;
+    }
+    button.delete { background: #b42318; }
+    button.logout { background: #555; }
+    .message {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 9px;
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+    .muted { color: #666; font-size: 13px; }
+    #inbox { display: none; }
+    #info { margin: 12px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="card">
+    <h2>Indonesia Wonderful Tours</h2>
+    <p>Dashboard Admin - Pesan Pengunjung</p>
+  </div>
+
+  <div class="card" id="loginBox">
+    <h3>Login Admin</h3>
+    <input id="email" type="email" placeholder="Email admin">
+    <input id="password" type="password" placeholder="Password admin">
+    <button onclick="login()">Masuk</button>
+    <p id="loginInfo" class="muted"></p>
+  </div>
+
+  <div class="card" id="inbox">
+    <h3>Daftar Pesan Masuk</h3>
+    <button onclick="loadMessages()">Muat Ulang Pesan</button>
+    <button class="logout" onclick="logout()">Keluar</button>
+    <div id="info"></div>
+    <div id="messages"></div>
+  </div>
+
+</div>
+
+<script>
+const SUPABASE_URL = "https://zfrccmdjtqrjvnmvzfxu.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_PU00khbKVJ7qB6eitUpAWQ_ng9r4f_B";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+function safe(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function(c) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[c];
+  });
+}
+
+async function login() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const info = document.getElementById("loginInfo");
+
+  info.textContent = "Sedang masuk...";
+
+  const { error } = await db.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    info.textContent = "Login gagal: " + error.message;
+    return;
+  }
+
+  await showInbox();
+}
+
+async function showInbox() {
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("inbox").style.display = "block";
+  await loadMessages();
+}
+
+async function logout() {
+  await db.auth.signOut();
+  document.getElementById("inbox").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+  document.getElementById("password").value = "";
+}
+
+async function loadMessages() {
+  const info = document.getElementById("info");
+  const area = document.getElementById("messages");
+
+  info.textContent = "Memuat pesan...";
+  area.innerHTML = "";
+
+  const { data, error } = await db
+    .from("pesan_pengunjung")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    info.textContent = "Gagal memuat pesan: " + error.message;
+    return;
+  }
+
+  info.textContent = "Jumlah pesan: " + data.length;
+
+  if (data.length === 0) {
+    area.textContent = "Belum ada pesan masuk.";
+    return;
+  }
+
+  data.forEach(function(p) {
+    const item = document.createElement("div");
+    item.className = "message";
+
+    item.innerHTML = `
+      <strong>${safe(p.nama)}</strong>
+      <p class="muted">Kontak: ${safe(p.kontak)}</p>
+      <p><strong>Topik:</strong> ${safe(p.topik)}</p>
+      <p>${safe(p.pesan).replace(/\n/g, "<br>")}</p>
+      <p class="muted">
+        ${safe(new Date(p.created_at).toLocaleString("id-ID"))}
+        | Status: ${safe(p.status)}
+      </p>
+      <button onclick="markRead(${Number(p.id)})">
+        Tandai Dibaca
+      </button>
+      <button class="delete" onclick="deleteMessage(${Number(p.id)})">
+        Hapus
+      </button>
+    `;
+
+    area.appendChild(item);
+  });
+}
+
+async function markRead(id) {
+  const { error } = await db
+    .from("pesan_pengunjung")
+    .update({ status: "Dibaca" })
+    .eq("id", id);
+
+  if (error) {
+    alert("Gagal mengubah status: " + error.message);
+    return;
+  }
+
+  await loadMessages();
+}
+
+async function deleteMessage(id) {
+  if (!confirm("Yakin ingin menghapus pesan ini?")) return;
+
+  const { error } = await db
+    .from("pesan_pengunjung")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("Gagal menghapus: " + error.message);
+    return;
+  }
+
+  await loadMessages();
+}
+
+(async function checkLogin() {
+  const { data } = await db.auth.getSession();
+
+  if (data.session) {
+    await showInbox();
+  }
+})();
+</script>
+</body>
+</html>
