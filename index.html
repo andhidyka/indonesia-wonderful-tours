@@ -68,15 +68,16 @@
     .body a.more-link{color:var(--green);font-weight:bold;text-decoration:none;font-size:17px;display:inline-block;margin-top:6px}
     .tag{font-size:14px;color:var(--green);background:#edf3ee;padding:6px 13px;border-radius:20px;font-weight:bold}
 
-    /* Photo Gallery Grid */
+    /* Photo Gallery Grid (Clickable Links) */
     .gallery-sec{background:#10251f;color:white}
     .gallery-sec .heading h2{color:white}
     .gallery-sec .heading p{color:#c9d6cf}
     .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:16px}
-    .gal-item{position:relative;border-radius:12px;overflow:hidden}
-    .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-    .gal-item:hover img{transform:scale(1.06)}
-    .gal-caption{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.78));color:#fff;font-size:15px;font-weight:bold}
+    a.gal-item{display:block;position:relative;border-radius:12px;overflow:hidden;text-decoration:none;color:white;border:1px solid rgba(232,189,104,0.18)}
+    a.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+    a.gal-item:hover img{transform:scale(1.06)}
+    .gal-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.84));color:#fff;font-size:15px;font-weight:bold;display:flex;justify-content:space-between;align-items:center}
+    .gal-caption span{color:var(--gold);font-size:13px}
     .gal-wide{grid-column:span 2}
 
     /* Pricing */
@@ -170,32 +171,32 @@
 </div></section>
 
 <section class="gallery-sec" id="gallery"><div class="wrap">
-  <div class="heading"><div class="eyebrow">VISUAL MOMENTS</div><h2>印尼绝美风光掠影</h2><p>从清晨火山云海到热带碧海蓝天，每一站都是值得珍藏的旅行大片。</p></div>
+  <div class="heading"><div class="eyebrow">VISUAL MOMENTS</div><h2>印尼绝美风光掠影</h2><p>点击任意图片，查看该景点的详细介绍与专属旅行路线。</p></div>
   <div class="gallery-grid">
-    <div class="gal-item gal-wide">
+    <a class="gal-item gal-wide" href="bromo.html" title="点击查看布罗莫火山详细介绍">
       <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1100&q=85" alt="布罗莫火山日出云海">
-      <div class="gal-caption">布罗莫火山 · 震撼日出云海</div>
-    </div>
-    <div class="gal-item">
+      <div class="gal-caption">布罗莫火山 · 震撼日出云海 <span>查看详情 →</span></div>
+    </a>
+    <a class="gal-item" href="bali.html" title="点击查看巴厘岛与佩尼达岛详细介绍">
       <img src="https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&fit=crop&w=700&q=85" alt="巴厘岛佩尼达岛海景">
-      <div class="gal-caption">佩尼达岛 · 精灵坠崖果冻海</div>
-    </div>
-    <div class="gal-item">
+      <div class="gal-caption">佩尼达岛 · 精灵坠崖 <span>查看详情 →</span></div>
+    </a>
+    <a class="gal-item" href="ijen.html" title="点击查看伊真火山详细介绍">
       <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=85" alt="伊真火山湖">
-      <div class="gal-caption">伊真火山 · 翡翠蓝火山口湖</div>
-    </div>
-    <div class="gal-item">
+      <div class="gal-caption">伊真火山 · 翡翠火山湖 <span>查看详情 →</span></div>
+    </a>
+    <a class="gal-item" href="bali.html" title="点击查看巴厘岛乌布梯田详细介绍">
       <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=85" alt="巴厘岛梯田">
-      <div class="gal-caption">巴厘岛乌布 · 德格拉朗梯田</div>
-    </div>
-    <div class="gal-item">
+      <div class="gal-caption">巴厘岛乌布 · 德格拉朗梯田 <span>查看详情 →</span></div>
+    </a>
+    <a class="gal-item" href="bromo.html" title="点击查看布罗莫越野吉普车体验详情">
       <img src="https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?auto=format&fit=crop&w=700&q=85" alt="布罗莫吉普车">
-      <div class="gal-caption">布罗莫 · 4x4 越野吉普车探险</div>
-    </div>
-    <div class="gal-item gal-wide">
+      <div class="gal-caption">布罗莫 · 4x4 越野吉普车 <span>查看详情 →</span></div>
+    </a>
+    <a class="gal-item gal-wide" href="bali.html" title="点击查看巴厘岛南部海岸与情人崖详情">
       <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=1100&q=85" alt="巴厘岛海岸日落">
-      <div class="gal-caption">巴厘岛南部海岸 · 印度洋浪漫日落</div>
-    </div>
+      <div class="gal-caption">巴厘岛南部海岸 · 印度洋浪漫日落 <span>查看详情 →</span></div>
+    </a>
   </div>
 </div></section>
 
@@ -242,73 +243,4 @@
     </details>
     <details class="faq-item">
       <summary>3. 印尼旅游签证（落地签）办理方便吗？</summary>
-      <p>非常方便。中国大陆、香港、台湾、马来西亚及新加坡等地区游客前往印尼均可办理落地签（VOA，费用 500,000 印尼盾，约合人民币 230 元）或提前在线申请电子落地签（e-VOA），护照有效期需在 6 个月以上。</p>
-    </details>
-    <details class="faq-item">
-      <summary>4. 如何联系并确认定制方案？</summary>
-      <p>您只需在下方在线咨询表中留下您的<strong>微信号（WeChat ID）或电子邮箱</strong>，并注明预计出行日期与人数，我们的中文客服会在 24 小时内主动添加您并发送详细路线与报价单。</p>
-    </details>
-  </div>
-</div></section>
-
-<section class="contact" id="contact"><div class="wrap">
-  <h2>准备好探索印度尼西亚了吗？</h2>
-  <p>欢迎通过下方在线表单联系我们。请告诉我们您的出行日期、人数和感兴趣的目的地，我们将在24小时内为您回复详细行程与报价。</p>
-  <div class="wechat-box">
-    <strong>微信 / 邮箱一对一联系：</strong><br>
-    请在下方留言留下您的【微信号】或【电子邮箱】，我们的中文客服将主动添加您！
-  </div>
-  <a class="btn primary" href="#form-pesan">填写在线咨询表</a>
-</div></section>
-</main>
-
-<footer>© 2026 Indonesia Wonderful Tours · Indonesia</footer>
-
-<section id="form-pesan">
-  <h2>在线咨询与预约</h2>
-  <p>请留下您的联系方式与旅行计划，我们将尽快通过微信或邮件与您联系。</p>
-  <form id="visitorForm">
-    <input name="nama" placeholder="您的称呼 / 姓名 (例如：王先生 / Ms. Li)" required minlength="2" maxlength="100">
-    <input name="kontak" placeholder="您的微信号 (WeChat ID) 或电子邮箱 (Email)" required minlength="5" maxlength="100">
-    <input name="topik" placeholder="咨询主题 (例如：8天7晚包团 / 4人定制游)" required minlength="2" maxlength="100">
-    <textarea name="pesan" placeholder="请填写预计出行日期、人数及想去的目的地..." required minlength="5" maxlength="3000" rows="5"></textarea>
-    <button type="submit" id="sendButton">发送咨询信息</button>
-    <p id="formInfo" role="status"></p>
-  </form>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-(function () {
-  const SUPABASE_URL = "https://zfrccmdjtqrjvnmvzfxu.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_PU00khbKVJ7qB6eitUpAWQ_ng9r4f_B";
-  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-  const form = document.getElementById("visitorForm");
-  const info = document.getElementById("formInfo");
-  const button = document.getElementById("sendButton");
-
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    button.disabled = true;
-    info.textContent = "正在发送您的咨询信息，请稍候...";
-    const values = new FormData(form);
-    const pesanBaru = {
-      nama: values.get("nama").trim(),
-      kontak: values.get("kontak").trim(),
-      topik: values.get("topik").trim(),
-      pesan: values.get("pesan").trim()
-    };
-    const { error } = await db.from("pesan_pengunjung").insert([pesanBaru]);
-    button.disabled = false;
-    if (error) {
-      info.textContent = "发送失败，请检查网络后重试。";
-      console.error(error);
-      return;
-    }
-    form.reset();
-    info.textContent = "感谢您的咨询！我们已收到您的信息，将尽快通过微信或邮件联系您。";
-  });
-})();
-</script>
-</body>
-</html>
+      <p>非常方便。中国大陆、香港、台湾、马来西亚及新加坡等地区游客前往印尼均可办理落地签（VOA，费用 500,000
