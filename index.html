@@ -30,9 +30,9 @@
     html{scroll-behavior:smooth}
     body{margin:0;font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.8;color:#26362e;background:var(--cream);font-size:18px}
     .wrap{width:min(1120px,92%);margin:auto}
-    header{position:absolute;top:0;width:100%;color:white;padding:20px 0}
+    header{position:absolute;top:0;width:100%;color:white;padding:20px 0;z-index:10}
     nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
-    .brand{font-weight:bold;letter-spacing:1px;font-size:21px;white-space:nowrap;line-height:1.5}
+    .brand{font-weight:bold;letter-spacing:1px;font-size:21px;white-space:nowrap;line-height:1.5;text-decoration:none;color:white}
     .brand span{color:var(--gold)}
     nav a{color:white;text-decoration:none;margin-left:18px;font-size:16px}
     .hero{min-height:680px;display:flex;align-items:center;color:white;background:linear-gradient(90deg,rgba(8,25,21,.84),rgba(8,25,21,.25)),url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1900&q=85') center/cover}
@@ -43,17 +43,20 @@
     .btn{display:inline-block;padding:15px 24px;border-radius:7px;text-decoration:none;font-weight:bold;margin:12px 10px 0 0;font-size:18px;cursor:pointer}
     .primary{background:var(--gold);color:#17271f}
     .secondary{border:1px solid white;color:white}
+    .outline-dark{border:2px solid var(--green);color:var(--green);background:transparent}
     section{padding:80px 0}
     .heading{text-align:center;max-width:760px;margin:0 auto 42px}
     .heading h2{font-size:38px;color:var(--dark);margin:8px}
     .heading p{color:#68766e;font-size:19px}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 8px 28px #14281e12}
-    .card img{width:100%;height:245px;object-fit:cover}
+    .card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 8px 28px #14281e12;transition:transform .2s}
+    .card:hover{transform:translateY(-4px)}
+    .card img{width:100%;height:245px;object-fit:cover;display:block}
     .body{padding:25px}
     .body h3{margin:10px 0;color:var(--dark);font-size:26px}
+    .body h3 a{color:var(--dark);font-size:26px}
     .body p{color:#53645a;font-size:18px}
-    .body a{color:var(--green);font-weight:bold;text-decoration:none;font-size:17px}
+    .body a.more-link{color:var(--green);font-weight:bold;text-decoration:none;font-size:17px;display:inline-block;margin-top:6px}
     .tag{font-size:15px;color:var(--green);background:#edf3ee;padding:6px 12px;border-radius:20px}
     .why{background:#e9ece5}
     .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -86,9 +89,9 @@
   </style>
 </head>
 <body>
-<header><div class="wrap"><nav><div class="brand">INDONESIA <span>WONDERFUL TOURS</span></div><div>
+<header><div class="wrap"><nav><a class="brand" href="index.html">INDONESIA <span>WONDERFUL TOURS</span></a><div>
 <a href="#places">旅游目的地</a>
-<a href="#pricing">精品套餐</a>
+<a href="itinerary.html">8天7晚行程</a>
 <a href="#services">我们的服务</a>
 <a href="testimoni.html">客户评价</a>
 <a href="honeymoon.html">蜜月旅行</a>
@@ -101,23 +104,23 @@
   <h1>探索印度尼西亚<br>开启难忘的旅行</h1>
   <p>寻找巴厘岛旅游、布罗莫火山日出和伊真火山蓝色火焰之旅？我们提供印度尼西亚私人包团、专车接送及中文导游服务，为您安排轻松舒适的印尼之旅。</p>
   <a class="btn primary" href="#form-pesan">立即咨询行程</a>
-  <a class="btn secondary" href="#places">探索目的地</a>
+  <a class="btn secondary" href="itinerary.html">查看8天7晚详细行程</a>
 </div></section>
 
 <section id="places"><div class="wrap">
-  <div class="heading"><div class="eyebrow">精选目的地</div><h2>开启您的印尼之旅</h2><p>三种不同风景，一次精彩体验。行程可根据您的时间和旅行喜好安排。</p></div>
+  <div class="heading"><div class="eyebrow">精选目的地</div><h2>开启您的印尼之旅</h2><p>三种不同风景，一次精彩体验。点击下方卡片探索每个目的地的详细路线与亮点。</p></div>
   <div class="cards">
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1000&q=85" alt="巴厘岛海滩与热带度假风景">
-      <div class="body"><span class="tag">海岛 · 文化 · 度假</span><h3>巴厘岛 Bali</h3><p>巴厘岛旅游深受游客喜爱。这里拥有美丽海滩、特色寺庙、绿色梯田和迷人日落。您可以体验当地文化、海岛度假及私人包车旅行。</p><a href="#pricing">查看相关行程 →</a></div>
+      <a href="bali.html"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1000&q=85" alt="巴厘岛海滩与热带度假风景"></a>
+      <div class="body"><span class="tag">海岛 · 文化 · 度假</span><h3><a href="bali.html" style="text-decoration:none">巴厘岛 Bali</a></h3><p>巴厘岛旅游深受游客喜爱。这里拥有美丽海滩、特色寺庙、绿色梯田和迷人日落。您可以体验当地文化、海岛度假及私人包车旅行。</p><a class="more-link" href="bali.html">探索巴厘岛详细行程 →</a></div>
     </article>
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85" alt="东爪哇布罗莫火山日出与火山沙海">
-      <div class="body"><span class="tag">火山 · 日出 · 摄影</span><h3>布罗莫火山 Mount Bromo</h3><p>布罗莫火山旅游以壮观日出和辽阔沙海闻名。您可以乘坐越野车欣赏火山风景，体验东爪哇独特的自然魅力。</p><a href="#pricing">查看相关行程 →</a></div>
+      <a href="bromo.html"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85" alt="东爪哇布罗莫火山日出与火山沙海"></a>
+      <div class="body"><span class="tag">火山 · 日出 · 摄影</span><h3><a href="bromo.html" style="text-decoration:none">布罗莫火山 Mount Bromo</a></h3><p>布罗莫火山旅游以壮观日出和辽阔沙海闻名。您可以乘坐越野车欣赏火山风景，体验东爪哇独特的自然魅力。</p><a class="more-link" href="bromo.html">探索布罗莫详细行程 →</a></div>
     </article>
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85" alt="东爪哇伊真火山口湖与蓝色火焰景观">
-      <div class="body"><span class="tag">徒步 · 火山湖 · 自然</span><h3>伊真火山 Kawah Ijen</h3><p>伊真火山旅游以壮丽火山口湖和独特蓝色火焰景观闻名。您可以体验火山徒步，欣赏东爪哇令人难忘的自然风光。</p><a href="#pricing">查看相关行程 →</a></div>
+      <a href="ijen.html"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85" alt="东爪哇伊真火山口湖与蓝色火焰景观"></a>
+      <div class="body"><span class="tag">徒步 · 火山湖 · 自然</span><h3><a href="ijen.html" style="text-decoration:none">伊真火山 Kawah Ijen</a></h3><p>伊真火山旅游以壮丽火山口湖和独特蓝色火焰景观闻名。您可以体验火山徒步，欣赏东爪哇令人难忘的自然风光。</p><a class="more-link" href="ijen.html">探索伊真详细行程 →</a></div>
     </article>
   </div>
 </div></section>
@@ -133,7 +136,10 @@
   <p>泗水朱安达国际机场接机</p><p>巴厘岛机场送机</p>
   <p>适合家庭、朋友及私人团体出行。一次旅程探索东爪哇火山与巴厘岛迷人风光。</p>
   <p>价格为每人 Rp 6,900,000，适用于12人满团。具体行程、出行日期及服务内容请咨询确认。</p>
-  <a class="btn primary" href="#form-pesan">预约与咨询套餐</a>
+  <div style="margin-top:20px;">
+    <a class="btn primary" href="#form-pesan">预约与咨询套餐</a>
+    <a class="btn outline-dark" href="itinerary.html">查看每日详细行程单 →</a>
+  </div>
 </div></section>
 
 <section class="why" id="services"><div class="wrap">
@@ -141,4 +147,57 @@
   <div class="features">
     <div class="feature"><b>私人包车与接送</b>根据行程安排专属车辆与机场接送服务，纯玩无购物。</div>
     <div class="feature"><b>定制旅游行程</b>可自由组合巴厘岛、布罗莫火山及伊真火山等目的地。</div>
-    <div class
+    <div class="feature"><b>中文一对一沟通</b>出发前详细确认出行日期、路线、酒店与报价。</div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>准备好探索印度尼西亚了吗？</h2>
+  <p>欢迎通过微信或下方在线表单联系我们。请告诉我们您的出行日期、人数和感兴趣的目的地，我们将在24小时内为您回复详细行程与报价。</p>
+  <div class="wechat-box">
+    <strong>微信咨询 (WeChat) / 邮箱联系：</strong><br>
+    请在下方留言留下您的【微信号】或【电子邮箱】，我们的中文客服将主动添加您！
+  </div>
+  <a class="btn primary" href="#form-pesan">填写在线咨询表</a>
+</div></section>
+</main>
+
+<footer>© 2026 Indonesia Wonderful Tours · Indonesia</footer>
+
+<section id="form-pesan">
+  <h2>在线咨询与预约</h2>
+  <p>请留下您的联系方式与旅行计划，我们将尽快通过微信或邮件与您联系。</p>
+  <form id="visitorForm">
+    <input name="nama" placeholder="您的称呼 / 姓名 (例如：王先生 / Ms. Li)" required minlength="2" maxlength="100">
+    <input name="kontak" placeholder="您的微信号 (WeChat ID) 或电子邮箱 (Email)" required minlength="5" maxlength="100">
+    <input name="topik" placeholder="咨询主题 (例如：8天7晚包团 / 4人定制游)" required minlength="2" maxlength="100">
+    <textarea name="pesan" placeholder="请填写预计出行日期、人数及想去的目的地..." required minlength="5" maxlength="3000" rows="5"></textarea>
+    <button type="submit" id="sendButton">发送咨询信息</button>
+    <p id="formInfo" role="status"></p>
+  </form>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  const SUPABASE_URL = "https://zfrccmdjtqrjvnmvzfxu.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_PU00khbKVJ7qB6eitUpAWQ_ng9r4f_B";
+  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  const form = document.getElementById("visitorForm");
+  const info = document.getElementById("formInfo");
+  const button = document.getElementById("sendButton");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    button.disabled = true;
+    info.textContent = "正在发送您的咨询信息，请稍候...";
+    const values = new FormData(form);
+    const pesanBaru = {
+      nama: values.get("nama").trim(),
+      kontak: values.get("kontak").trim(),
+      topik: values.get("topik").trim(),
+      pesan: values.get("pesan").trim()
+    };
+    const { error } = await db.from("pesan_pengunjung").insert([pesanBaru]);
+    button.disabled = false;
+    if (
