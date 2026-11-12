@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://andhidyka.github.io/indonesia-wonderful-tours/sitemap.xml
