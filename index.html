@@ -33,7 +33,21 @@ Manually add CNAME record to the Domain Name Server
 :root{--dark:#10251f;--green:#245744;--gold:#e8bd68;--cream:#f7f5ef}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;line-height:1.7;color:#26362e;background:var(--cream)}
 .wrap{width:min(1120px,92%);margin:auto}header{position:absolute;top:0;width:100%;color:white;padding:20px 0}
-nav{display:flex;justify-content:space-between;align-items:center}.brand{font-weight:bold;letter-spacing:1px}.brand span{color:var(--gold)}nav a{color:white;text-decoration:none;margin-left:20px;font-size:14px}
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.brand{
+  font-weight:bold;
+  letter-spacing:1px;
+  font-size:18px;
+  white-space:nowrap;
+  line-height:1.4;
+}.brand span{color:var(--gold)}nav a{color:white;text-decoration:none;margin-left:20px;font-size:14px}
 .hero{min-height:680px;display:flex;align-items:center;color:white;background:linear-gradient(90deg,rgba(8,25,21,.84),rgba(8,25,21,.25)),url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=2000&q=85') center/cover}
 .hero-content{padding:130px 0 80px;max-width:700px}.eyebrow{color:var(--gold);font-weight:bold;letter-spacing:2px}h1{font-size:clamp(40px,7vw,72px);line-height:1.15;margin:16px 0}.hero p{font-size:18px;color:#f0f1ec}
 .btn{display:inline-block;padding:13px 22px;border-radius:5px;text-decoration:none;font-weight:bold;margin:12px 10px 0 0}.primary{background:var(--gold);color:#17271f}.secondary{border:1px solid white;color:white}
